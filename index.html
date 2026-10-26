@@ -2,166 +2,311 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="MyDigital Space, espace personnel pour organiser ses tâches, projets, habitudes et objectifs.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="MyDigital Space — ton espace personnel pour organiser tâches, projets, habitudes et objectifs.">
+<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#eef4fb" media="(prefers-color-scheme: light)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
 <title>MyDigital Space</title>
-<style>
-:root{--bg:#0b1220;--panel:#141f33;--panel2:#192740;--text:#edf4ff;--muted:#9aabc4;--accent:#56a8ff;--accent2:#8bd8d0;--border:#2a3a55;--danger:#ff8585;--good:#65d6a2;--shadow:0 12px 30px #02081730}
-body.light{--bg:#eef4fb;--panel:#fff;--panel2:#f5f8fd;--text:#18253a;--muted:#60718b;--accent:#1769cf;--accent2:#087f78;--border:#d9e3ef;--shadow:0 12px 30px #19345610}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}button,input,select,textarea{font:inherit}button,a{transition:background .18s,border-color .18s,color .18s}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}a{color:var(--accent);text-decoration:none}.shell{display:grid;grid-template-columns:245px minmax(0,1fr);min-height:100vh}.sidebar{background:var(--panel);border-right:1px solid var(--border);padding:24px 16px;display:flex;flex-direction:column;gap:24px}.brand{display:flex;gap:10px;align-items:center;padding:0 10px;font-weight:800;font-size:20px;letter-spacing:-.6px}.brand-mark{display:grid;place-items:center;width:36px;height:36px;background:var(--accent);color:#fff;border-radius:12px;font-weight:900}.brand span:last-child{color:var(--accent)}.nav-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:0 12px;margin:6px 0}.nav{display:grid;gap:5px}.nav a{color:var(--muted);display:flex;gap:12px;align-items:center;padding:11px 12px;border-radius:10px;font-size:14px}.nav a:hover,.nav a.active{background:var(--panel2);color:var(--text)}.nav a.active{box-shadow:inset 3px 0 var(--accent)}.nav-icon{width:22px;text-align:center}.side-note{margin-top:auto;border:1px solid var(--border);background:var(--panel2);border-radius:14px;padding:15px;font-size:13px;color:var(--muted)}.side-note strong{color:var(--text);display:block;margin-bottom:5px}.main{min-width:0;padding:28px clamp(16px,3vw,42px) 40px;max-width:1600px;width:100%;margin:0 auto}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:28px}.crumb{color:var(--muted);font-size:12px;margin-bottom:5px}.page-title{font-size:clamp(24px,3vw,32px);line-height:1.15;margin:0;letter-spacing:-1px}.sub{color:var(--muted);margin:8px 0 0;font-size:14px}.top-actions{display:flex;gap:9px;align-items:center}.avatar{width:38px;height:38px;border-radius:50%;background:var(--panel2);border:1px solid var(--border);display:grid;place-items:center;font-weight:700;color:var(--accent)}.btn{border:1px solid var(--border);background:var(--panel);color:var(--text);border-radius:10px;padding:9px 13px;font-size:13px;font-weight:650;display:inline-flex;align-items:center;justify-content:center;gap:7px}.btn:hover{border-color:var(--accent)}.btn.primary{background:var(--accent);border-color:var(--accent);color:white}.btn.danger{color:var(--danger)}.btn.small{padding:6px 9px;font-size:12px}.search{width:min(260px,34vw);border:1px solid var(--border);background:var(--panel);border-radius:10px;color:var(--text);padding:10px 12px}.view{display:none;animation:appear .2s ease}.view.active{display:block}@keyframes appear{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:18px}.card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:19px;box-shadow:var(--shadow);min-width:0}.stat-head{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px;gap:8px}.stat-icon{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--panel2);font-size:16px}.stat-value{font-size:29px;font-weight:800;letter-spacing:-1px;margin:12px 0 2px}.stat-foot{font-size:12px;color:var(--muted)}.accent{color:var(--accent)}.two-col{grid-template-columns:minmax(0,1.45fr) minmax(270px,1fr);align-items:start}.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}.section-head h2{font-size:16px;margin:0;letter-spacing:-.3px}.section-head p{font-size:12px;color:var(--muted);margin:4px 0 0}.task-list{display:grid}.task{display:flex;gap:11px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--border)}.task:last-child{border-bottom:0}.check{appearance:none;width:18px;height:18px;flex-shrink:0;border:1.5px solid var(--muted);border-radius:6px;margin:2px 0 0;cursor:pointer}.check:checked{background:var(--accent);border-color:var(--accent)}.check:checked:after{content:"✓";color:white;display:block;text-align:center;font-size:12px;line-height:16px}.task-body{flex:1;min-width:0}.task-title{font-size:13px;font-weight:650;overflow-wrap:anywhere}.task.done .task-title{text-decoration:line-through;color:var(--muted)}.task-meta{font-size:11px;color:var(--muted);margin-top:4px}.pill{display:inline-flex;align-items:center;gap:5px;font-size:10px;padding:4px 7px;border-radius:99px;background:var(--panel2);color:var(--muted);white-space:nowrap}.pill.green{color:var(--good)}.pill.blue{color:var(--accent)}.pill.orange{color:#f3b75d}.row-actions{display:flex;gap:4px}.icon-btn{background:transparent;border:0;color:var(--muted);padding:4px 6px;border-radius:7px}.icon-btn:hover{background:var(--panel2);color:var(--text)}.empty{padding:22px;text-align:center;color:var(--muted);font-size:13px}.progress-line{height:7px;border-radius:20px;background:var(--panel2);overflow:hidden;margin:12px 0}.progress-line span{height:100%;display:block;background:var(--accent);border-radius:20px;transition:width .2s}.goal-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}.goal-row:last-child{border-bottom:0}.goal-emoji{width:38px;height:38px;border-radius:12px;background:var(--panel2);display:grid;place-items:center}.goal-content{flex:1;min-width:0}.goal-title{font-size:13px;font-weight:650}.goal-detail{font-size:11px;color:var(--muted)}.goal-pct{font-size:12px;font-weight:750}.quick-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.quick{padding:17px;text-align:left;background:var(--panel);border:1px solid var(--border);border-radius:14px;color:var(--text)}.quick:hover{border-color:var(--accent);transform:translateY(-2px)}.quick .big{font-size:23px}.quick strong{display:block;font-size:13px;margin-top:9px}.quick small{color:var(--muted);font-size:11px}.toolbar{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-bottom:16px}.toolbar .search{flex:1;min-width:180px;width:auto}.field{display:grid;gap:6px;margin-bottom:14px}.field label{font-size:12px;color:var(--muted);font-weight:650}.field input,.field select,.field textarea,.control{width:100%;border:1px solid var(--border);background:var(--bg);color:var(--text);border-radius:9px;padding:10px 11px;min-width:0}.field textarea{resize:vertical;min-height:90px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 13px}.form-grid .full{grid-column:1/-1}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--border);white-space:nowrap}th{font-size:11px;color:var(--muted);font-weight:650}td{color:var(--text)}.project-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.project-card{background:var(--panel);border:1px solid var(--border);border-radius:15px;padding:19px}.project-symbol{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:var(--panel2);font-size:22px;margin-bottom:15px}.project-card h3{font-size:15px;margin:0 0 7px}.project-card p{font-size:12px;color:var(--muted);min-height:38px}.project-foot{display:flex;justify-content:space-between;align-items:center;margin-top:15px;gap:8px}.habit-grid{grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}.day{background:var(--panel2);border:1px solid var(--border);border-radius:9px;text-align:center;padding:9px 2px;font-size:10px;color:var(--muted)}.day strong{display:block;color:var(--text);font-size:13px;margin:4px 0}.day.marked{background:color-mix(in srgb,var(--accent) 18%,var(--panel));border-color:var(--accent)}.day button{border:0;background:transparent;color:inherit;font-size:15px}.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:1px solid var(--border);border-left:1px solid var(--border)}.calendar-cell{min-height:83px;padding:7px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);font-size:11px;color:var(--muted);overflow-wrap:anywhere}.calendar-cell.today{background:color-mix(in srgb,var(--accent) 12%,var(--panel));color:var(--text)}.calendar-cell .event{margin-top:5px;background:var(--panel2);border-left:2px solid var(--accent);padding:4px;border-radius:3px;color:var(--text);font-size:10px}.weekdays{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;color:var(--muted);font-size:10px;padding:10px 0}.habit-item{display:flex;align-items:center;gap:10px;padding:13px 0;border-bottom:1px solid var(--border)}.habit-item:last-child{border-bottom:0}.habit-item .grow{flex:1}.habit-item strong{font-size:13px}.habit-item p{font-size:11px;color:var(--muted);margin:3px 0}.settings-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.notice{border:1px solid var(--border);background:var(--panel2);border-radius:12px;padding:13px;color:var(--muted);font-size:12px}.toast{position:fixed;bottom:22px;right:22px;background:var(--text);color:var(--bg);padding:12px 17px;border-radius:10px;box-shadow:var(--shadow);font-size:13px;z-index:50;display:none}.toast.show{display:block}.modal-backdrop{position:fixed;inset:0;background:#030817aa;display:none;align-items:center;justify-content:center;padding:18px;z-index:30}.modal-backdrop.open{display:flex}.modal{width:min(520px,100%);max-height:90vh;overflow:auto;background:var(--panel);border:1px solid var(--border);border-radius:17px;padding:22px;box-shadow:var(--shadow)}.modal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.modal-top h2{margin:0;font-size:18px}.hidden{display:none!important}.footer{padding:28px 0 0;text-align:center;color:var(--muted);font-size:11px}
-@media(max-width:1100px){.shell{grid-template-columns:210px minmax(0,1fr)}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.two-col{grid-template-columns:1fr}}
-@media(max-width:680px){.shell{display:block}.sidebar{padding:13px;border-right:0;border-bottom:1px solid var(--border);gap:12px}.brand{padding:0 4px}.sidebar .nav-label,.side-note{display:none}.nav{display:flex;overflow-x:auto;padding-bottom:3px}.nav a{white-space:nowrap;padding:9px}.nav a.active{box-shadow:inset 0 -3px var(--accent)}.main{padding:20px 14px 30px}.topbar{align-items:flex-start}.top-actions{flex-wrap:wrap;justify-content:flex-end}.search.global{display:none}.stats{gap:9px}.card{padding:14px}.stat-value{font-size:25px}.project-grid,.settings-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}.calendar-cell{min-height:58px;padding:4px;font-size:10px}.calendar-cell .event{font-size:9px}.habit-grid{gap:4px}.day{padding:7px 1px}.section-head{align-items:flex-start}.section-head .btn{font-size:11px;padding:7px}.quick-grid{gap:9px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
-</style>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2356a8ff'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='system-ui' font-weight='900'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <div class="shell">
-<aside class="sidebar">
-  <div class="brand"><span class="brand-mark">M</span><span>MyDigital<span>Space</span></span></div>
+<aside class="sidebar" role="navigation" aria-label="Navigation principale">
+  <div class="brand"><span class="brand-mark" aria-hidden="true">M</span><span>MyDigital<span>Space</span></span></div>
   <div>
     <div class="nav-label">Espace de travail</div>
     <nav class="nav" id="navigation">
-      <a href="#dashboard" data-view="dashboard" class="active"><span class="nav-icon">◫</span>Vue d'ensemble</a>
-      <a href="#tasks" data-view="tasks"><span class="nav-icon">☑</span>Mes tâches</a>
-      <a href="#projects" data-view="projects"><span class="nav-icon">▦</span>Projets</a>
-      <a href="#calendar" data-view="calendar"><span class="nav-icon">▦</span>Calendrier</a>
-      <a href="#habits" data-view="habits"><span class="nav-icon">↗</span>Habitudes</a>
-      <a href="#goals" data-view="goals"><span class="nav-icon">◎</span>Objectifs</a>
+      <a href="#dashboard" data-view="dashboard" class="active"><span class="nav-icon" aria-hidden="true">◫</span>Vue d'ensemble</a>
+      <a href="#tasks" data-view="tasks"><span class="nav-icon" aria-hidden="true">☑</span>Mes tâches</a>
+      <a href="#projects" data-view="projects"><span class="nav-icon" aria-hidden="true">▦</span>Projets</a>
+      <a href="#calendar" data-view="calendar"><span class="nav-icon" aria-hidden="true">▣</span>Calendrier</a>
+      <a href="#habits" data-view="habits"><span class="nav-icon" aria-hidden="true">↗</span>Habitudes</a>
+      <a href="#goals" data-view="goals"><span class="nav-icon" aria-hidden="true">◎</span>Objectifs</a>
+      <a href="#focus" data-view="focus"><span class="nav-icon" aria-hidden="true">⏱</span>Focus</a>
+      <a href="#stats" data-view="stats"><span class="nav-icon" aria-hidden="true">📊</span>Statistiques</a>
     </nav>
-    <div class="nav-label" style="margin-top:22px">Préférences</div>
+    <div class="nav-label" style="margin-top:18px">Préférences</div>
     <nav class="nav">
-      <a href="#settings" data-view="settings"><span class="nav-icon">⚙</span>Paramètres</a>
+      <a href="#settings" data-view="settings"><span class="nav-icon" aria-hidden="true">⚙</span>Paramètres</a>
     </nav>
   </div>
   <div class="side-note"><strong>✦ Un petit pas chaque jour</strong>Les progrès réguliers comptent plus que la perfection.</div>
 </aside>
+
 <main class="main">
   <header class="topbar">
-    <div><div class="crumb" id="todayLabel">MON ESPACE PERSONNEL</div><h1 class="page-title" id="pageTitle">Vue d'ensemble</h1><p class="sub" id="pageSubtitle">Voici ce qui se passe dans ton espace aujourd'hui.</p></div>
-    <div class="top-actions"><input id="globalSearch" class="search global" placeholder="⌕ Rechercher..." aria-label="Recherche rapide"><button class="btn" id="themeToggle" title="Changer de thème" aria-label="Changer de thème">☼</button><div class="avatar" id="avatar">P</div></div>
+    <div>
+      <div class="crumb" id="todayLabel">MON ESPACE PERSONNEL</div>
+      <h1 class="page-title" id="pageTitle">Vue d'ensemble</h1>
+      <p class="sub" id="pageSubtitle">Voici ce qui se passe dans ton espace aujourd'hui.</p>
+    </div>
+    <div class="top-actions">
+      <input id="globalSearch" class="search global" placeholder="⌕ Rechercher…" aria-label="Recherche globale" autocomplete="off">
+      <button class="btn" id="themeToggle" title="Changer de thème" aria-label="Changer de thème">☼</button>
+      <div class="avatar" id="avatar" title="Profil">P</div>
+    </div>
   </header>
 
-  <section class="view active" id="view-dashboard">
+  <!-- DASHBOARD -->
+  <section class="view active" id="view-dashboard" aria-labelledby="pageTitle">
+    <div id="notifBanner" class="notif-banner hidden">
+      <span>Active les notifications pour être rappelé des échéances.</span>
+      <button class="btn small primary" id="enableNotif">Activer</button>
+    </div>
     <div class="grid stats">
-      <article class="card"><div class="stat-head">Tâches à faire <span class="stat-icon">☑</span></div><div class="stat-value" id="statOpen">0</div><div class="stat-foot">Tâches non terminées</div></article>
-      <article class="card"><div class="stat-head">Terminées <span class="stat-icon">✓</span></div><div class="stat-value" id="statDone">0</div><div class="stat-foot">Depuis le début</div></article>
-      <article class="card"><div class="stat-head">Projets actifs <span class="stat-icon">▦</span></div><div class="stat-value" id="statProjects">0</div><div class="stat-foot">Idées en cours</div></article>
-      <article class="card"><div class="stat-head">Habitudes du jour <span class="stat-icon">↗</span></div><div class="stat-value" id="statHabits">0/0</div><div class="stat-foot">Habitudes validées aujourd'hui</div></article>
+      <article class="card">
+        <div class="stat-head">Tâches à faire <span class="stat-icon">☑</span></div>
+        <div class="stat-value" id="statOpen">0</div>
+        <div class="stat-foot">Tâches non terminées</div>
+      </article>
+      <article class="card">
+        <div class="stat-head">Terminées <span class="stat-icon">✓</span></div>
+        <div class="stat-value" id="statDone">0</div>
+        <div class="stat-foot">Depuis le début</div>
+      </article>
+      <article class="card">
+        <div class="stat-head">Projets actifs <span class="stat-icon">▦</span></div>
+        <div class="stat-value" id="statProjects">0</div>
+        <div class="stat-foot">Idées en cours</div>
+      </article>
+      <article class="card">
+        <div class="stat-head">Habitudes du jour <span class="stat-icon">↗</span></div>
+        <div class="stat-value" id="statHabits">0/0</div>
+        <div class="stat-foot">Habitudes validées aujourd'hui</div>
+      </article>
     </div>
     <div class="grid two-col">
-      <article class="card"><div class="section-head"><div><h2>Mes priorités</h2><p>Les prochaines actions à accomplir</p></div><button class="btn small" data-go="tasks">Toutes les tâches ↗</button></div><div id="dashboardTasks" class="task-list"></div></article>
-      <article class="card"><div class="section-head"><div><h2>Progression des objectifs</h2><p>Garde le cap sur tes projets</p></div><button class="btn small" data-go="goals">Voir tout</button></div><div id="dashboardGoals"></div></article>
+      <article class="card">
+        <div class="section-head">
+          <div><h2>Mes priorités</h2><p>Les prochaines actions à accomplir</p></div>
+          <button class="btn small" data-go="tasks">Toutes les tâches ↗</button>
+        </div>
+        <div id="dashboardTasks" class="task-list"></div>
+      </article>
+      <article class="card">
+        <div class="section-head">
+          <div><h2>Progression des objectifs</h2><p>Garde le cap</p></div>
+          <button class="btn small" data-go="goals">Voir tout</button>
+        </div>
+        <div id="dashboardGoals"></div>
+      </article>
     </div>
-    <div class="card" style="margin-top:16px"><div class="section-head"><div><h2>Accès rapides</h2><p>Les outils utiles au quotidien</p></div></div><div class="grid quick-grid">
-      <button class="quick" data-action="task"><span class="big">＋</span><strong>Nouvelle tâche</strong><small>Ajouter une action</small></button>
-      <button class="quick" data-action="project"><span class="big">▦</span><strong>Nouveau projet</strong><small>Structurer une idée</small></button>
-      <button class="quick" data-action="event"><span class="big">▣</span><strong>Événement</strong><small>Planifier un moment</small></button>
-      <button class="quick" data-action="goal"><span class="big">◎</span><strong>Nouvel objectif</strong><small>Définir une cible</small></button>
-    </div></div>
+    <div class="card" style="margin-top:14px">
+      <div class="section-head"><div><h2>Accès rapides</h2><p>Les outils utiles au quotidien</p></div></div>
+      <div class="grid quick-grid">
+        <button class="quick" data-action="task"><span class="big">＋</span><strong>Nouvelle tâche</strong><small>Ajouter une action</small></button>
+        <button class="quick" data-action="project"><span class="big">▦</span><strong>Nouveau projet</strong><small>Structurer une idée</small></button>
+        <button class="quick" data-action="event"><span class="big">▣</span><strong>Événement</strong><small>Planifier un moment</small></button>
+        <button class="quick" data-action="goal"><span class="big">◎</span><strong>Nouvel objectif</strong><small>Définir une cible</small></button>
+      </div>
+    </div>
   </section>
 
+  <!-- TASKS -->
   <section class="view" id="view-tasks">
-    <div class="toolbar"><input class="search" id="taskSearch" placeholder="Rechercher dans les tâches..." aria-label="Rechercher les tâches"><select class="control" style="width:auto" id="taskFilter" aria-label="Filtrer les tâches"><option value="all">Toutes les tâches</option><option value="open">À faire</option><option value="done">Terminées</option></select><button class="btn primary" data-action="task">＋ Ajouter une tâche</button></div>
-    <div class="card"><div class="section-head"><div><h2>Liste des tâches</h2><p>Organise tes actions par priorité et échéance.</p></div><span class="pill" id="taskCountLabel">0 tâche</span></div><div id="allTasks" class="task-list"></div></div>
+    <div class="toolbar">
+      <input class="search" id="taskSearch" placeholder="Rechercher dans les tâches…" aria-label="Rechercher les tâches">
+      <select class="control" style="width:auto" id="taskFilter" aria-label="Filtrer les tâches">
+        <option value="all">Toutes</option>
+        <option value="open">À faire</option>
+        <option value="done">Terminées</option>
+        <option value="high">Priorité haute</option>
+      </select>
+      <select class="control" style="width:auto" id="taskProjectFilter" aria-label="Filtrer par projet">
+        <option value="">Tous les projets</option>
+      </select>
+      <div class="view-toggle" role="group" aria-label="Mode d'affichage">
+        <button type="button" id="viewList" class="active" title="Vue liste">☰ Liste</button>
+        <button type="button" id="viewKanban" title="Vue Kanban">▦ Kanban</button>
+      </div>
+      <button class="btn primary" data-action="task">＋ Ajouter</button>
+    </div>
+    <div class="card">
+      <div class="section-head">
+        <div><h2>Liste des tâches</h2><p>Organise tes actions par priorité et échéance.</p></div>
+        <span class="pill" id="taskCountLabel">0 tâche</span>
+      </div>
+      <div id="allTasks" class="task-list"></div>
+      <div id="kanbanBoard" class="kanban hidden"></div>
+    </div>
   </section>
 
+  <!-- PROJECTS -->
   <section class="view" id="view-projects">
-    <div class="toolbar"><input class="search" id="projectSearch" placeholder="Rechercher un projet..." aria-label="Rechercher les projets"><button class="btn primary" data-action="project">＋ Nouveau projet</button></div>
+    <div class="toolbar">
+      <input class="search" id="projectSearch" placeholder="Rechercher un projet…" aria-label="Rechercher les projets">
+      <button class="btn primary" data-action="project">＋ Nouveau projet</button>
+    </div>
     <div class="grid project-grid" id="allProjects"></div>
   </section>
 
+  <!-- CALENDAR -->
   <section class="view" id="view-calendar">
-    <div class="card"><div class="calendar-head"><button class="btn" id="prevMonth" aria-label="Mois précédent">←</button><h2 id="monthTitle" style="margin:0"></h2><button class="btn" id="nextMonth" aria-label="Mois suivant">→</button></div><div class="weekdays"><span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span></div><div class="calendar-grid" id="calendarGrid"></div><p class="sub">Clique sur une date pour ajouter un événement. Les événements sont conservés localement.</p></div>
-    <div class="card" style="margin-top:16px"><div class="section-head"><div><h2>Prochains événements</h2><p>Ton planning à venir</p></div><button class="btn primary" data-action="event">＋ Événement</button></div><div id="eventList"></div></div>
+    <div class="card">
+      <div class="calendar-head">
+        <button class="btn" id="prevMonth" aria-label="Mois précédent">←</button>
+        <h2 id="monthTitle" style="margin:0;font-size:16px;text-transform:capitalize"></h2>
+        <button class="btn" id="nextMonth" aria-label="Mois suivant">→</button>
+      </div>
+      <div class="weekdays"><span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span></div>
+      <div class="calendar-grid" id="calendarGrid"></div>
+      <p class="sub" style="margin-top:10px">Clique sur une date pour ajouter un événement. Données conservées localement.</p>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <div class="section-head">
+        <div><h2>Prochains événements</h2><p>Ton planning à venir</p></div>
+        <button class="btn primary" data-action="event">＋ Événement</button>
+      </div>
+      <div id="eventList"></div>
+    </div>
   </section>
 
+  <!-- HABITS -->
   <section class="view" id="view-habits">
-    <div class="card"><div class="section-head"><div><h2>Mon suivi quotidien</h2><p>Coche une habitude quand tu l'as réalisée aujourd'hui.</p></div><button class="btn primary" data-action="habit">＋ Habitude</button></div><div id="habitList"></div></div>
-    <div class="card" style="margin-top:16px"><div class="section-head"><div><h2>Cette semaine</h2><p>Marque tes journées où tu as avancé.</p></div></div><div class="grid habit-grid" id="weekGrid"></div></div>
+    <div class="card">
+      <div class="section-head">
+        <div><h2>Mon suivi quotidien</h2><p>Coche une habitude quand tu l'as réalisée aujourd'hui.</p></div>
+        <button class="btn primary" data-action="habit">＋ Habitude</button>
+      </div>
+      <div id="habitList"></div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <div class="section-head">
+        <div><h2>Cette semaine</h2><p>Jours où tu as avancé</p></div>
+      </div>
+      <div class="grid habit-grid" id="weekGrid"></div>
+    </div>
   </section>
 
+  <!-- GOALS -->
   <section class="view" id="view-goals">
-    <div class="toolbar"><div class="sub" style="flex:1">Transforme tes idées en objectifs mesurables.</div><button class="btn primary" data-action="goal">＋ Nouvel objectif</button></div>
+    <div class="toolbar">
+      <div class="sub" style="flex:1">Transforme tes idées en objectifs mesurables.</div>
+      <button class="btn primary" data-action="goal">＋ Nouvel objectif</button>
+    </div>
     <div class="grid project-grid" id="allGoals"></div>
   </section>
 
+  <!-- FOCUS / POMODORO -->
+  <section class="view" id="view-focus">
+    <div class="card pomo-card">
+      <div class="pomo-mode work" id="pomoMode">Session de travail</div>
+      <div class="pomo-timer" id="pomoTimer" aria-live="polite">25:00</div>
+      <div class="pomo-progress"><span id="pomoProgress" style="width:100%"></span></div>
+      <div class="pomo-controls">
+        <button class="btn primary" id="pomoStart">▶ Démarrer</button>
+        <button class="btn" id="pomoPause" disabled>⏸ Pause</button>
+        <button class="btn" id="pomoReset">↺ Reset</button>
+      </div>
+      <div class="pomo-presets">
+        <button class="btn small" data-pomo="25">25 min</button>
+        <button class="btn small" data-pomo="15">15 min</button>
+        <button class="btn small" data-pomo="5">5 min pause</button>
+        <button class="btn small" data-pomo="50">50 min</button>
+      </div>
+      <div class="pomo-task">
+        <label for="pomoTaskSelect">Tâche associée (optionnel)</label>
+        <select id="pomoTaskSelect" class="control" style="margin:6px auto 0;display:block">
+          <option value="">— Aucune —</option>
+        </select>
+      </div>
+      <div class="pomo-stats">
+        <div><strong id="pomoSessions">0</strong>sessions aujourd'hui</div>
+        <div><strong id="pomoMinutes">0</strong>minutes focus</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <div class="section-head"><div><h2>Comment ça marche ?</h2></div></div>
+      <p class="sub" style="margin:0">Technique Pomodoro : 25 min de concentration, puis 5 min de pause. Après 4 sessions, prends une pause plus longue. Le compteur continue même si tu changes de page (widget flottant).</p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="view" id="view-stats">
+    <div class="grid two-col">
+      <article class="card">
+        <div class="section-head"><div><h2>Tâches cette semaine</h2><p>Terminées par jour</p></div></div>
+        <div class="chart-wrap" id="chartTasksWeek"></div>
+      </article>
+      <article class="card">
+        <div class="section-head"><div><h2>Habitudes</h2><p>Taux de complétion (7 jours)</p></div></div>
+        <div class="chart-wrap" id="chartHabits"></div>
+      </article>
+    </div>
+    <div class="grid two-col" style="margin-top:14px">
+      <article class="card">
+        <div class="section-head"><div><h2>Objectifs</h2><p>Progression globale</p></div></div>
+        <div id="chartGoals"></div>
+      </article>
+      <article class="card">
+        <div class="section-head"><div><h2>Résumé</h2><p>Vue d'ensemble</p></div></div>
+        <div class="stats-extra" id="statsSummary"></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- SETTINGS -->
   <section class="view" id="view-settings">
     <div class="grid settings-grid">
-      <div class="card"><div class="section-head"><div><h2>Profil</h2><p>Personnalise ton espace</p></div></div><div class="field"><label for="nameInput">Prénom affiché</label><input id="nameInput" maxlength="40" placeholder="Ton prénom"></div><div class="field"><label for="weekStart">Début de semaine</label><select id="weekStart"><option value="1">Lundi</option><option value="0">Dimanche</option></select></div><button class="btn primary" id="saveSettings">Enregistrer</button></div>
-      <div class="card"><div class="section-head"><div><h2>Apparence</h2><p>Choisis le thème de ton interface</p></div></div><p class="sub">Le thème est enregistré sur cet appareil.</p><button class="btn" id="settingsTheme">Basculer clair / sombre</button></div>
-      <div class="card"><div class="section-head"><div><h2>Sauvegarde</h2><p>Garde une copie de tes données</p></div></div><p class="sub">Exporte tes tâches, projets, objectifs, habitudes et événements dans un fichier JSON.</p><button class="btn primary" id="exportData">↓ Exporter mes données</button><div class="field" style="margin-top:18px"><label for="importFile">Restaurer une sauvegarde JSON</label><input id="importFile" type="file" accept="application/json,.json"></div></div>
-      <div class="card"><div class="section-head"><div><h2>Zone de réinitialisation</h2><p>Action irréversible</p></div></div><p class="sub">Supprime les données enregistrées par cette application dans ce navigateur. Exporte une copie avant si nécessaire.</p><button class="btn danger" id="clearData">Effacer toutes mes données</button></div>
+      <div class="card">
+        <div class="section-head"><div><h2>Profil</h2><p>Personnalise ton espace</p></div></div>
+        <div class="field"><label for="nameInput">Prénom affiché</label><input id="nameInput" maxlength="40" placeholder="Ton prénom"></div>
+        <div class="field"><label for="weekStart">Début de semaine</label>
+          <select id="weekStart"><option value="1">Lundi</option><option value="0">Dimanche</option></select>
+        </div>
+        <button class="btn primary" id="saveSettings">Enregistrer</button>
+      </div>
+      <div class="card">
+        <div class="section-head"><div><h2>Apparence</h2><p>Thème de l'interface</p></div></div>
+        <p class="sub">Le thème est enregistré sur cet appareil.</p>
+        <button class="btn" id="settingsTheme">Basculer clair / sombre</button>
+      </div>
+      <div class="card">
+        <div class="section-head"><div><h2>Sauvegarde</h2><p>Garde une copie de tes données</p></div></div>
+        <p class="sub">Exporte tâches, projets, objectifs, habitudes et événements en JSON.</p>
+        <button class="btn primary" id="exportData">↓ Exporter mes données</button>
+        <div class="field" style="margin-top:16px">
+          <label for="importFile">Restaurer une sauvegarde JSON</label>
+          <input id="importFile" type="file" accept="application/json,.json">
+        </div>
+      </div>
+      <div class="card">
+        <div class="section-head"><div><h2>Zone de réinitialisation</h2><p>Action irréversible</p></div></div>
+        <p class="sub">Supprime les données de cette application dans ce navigateur. Exporte avant si besoin.</p>
+        <button class="btn danger" id="clearData">Effacer toutes mes données</button>
+      </div>
     </div>
-    <div class="notice" style="margin-top:16px">Confidentialité : ce site fonctionne sans compte, serveur ni synchronisation en ligne. Les données sont stockées dans le stockage local du navigateur. Pour partager les données entre appareils, il faut exporter puis importer le fichier JSON manuellement.</div>
+    <div class="notice" style="margin-top:14px">
+      <strong>Confidentialité</strong> — Ce site fonctionne sans compte, serveur ni synchronisation. Les données restent dans le stockage local du navigateur. Pour partager entre appareils : exporte puis importe le fichier JSON. Tu peux aussi installer l'app (PWA) depuis le menu du navigateur.
+    </div>
   </section>
+
   <div class="footer">MyDigital Space · Ton espace, ton rythme · Données stockées localement</div>
 </main>
 </div>
 
-<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal"><div class="modal-top"><h2 id="modalTitle">Ajouter</h2><button class="icon-btn" id="closeModal" aria-label="Fermer">✕</button></div><form id="modalForm"></form></div></div>
+<div class="floating-pomo" id="floatingPomo" role="status">
+  <span class="time" id="floatTime">25:00</span>
+  <button class="btn small" id="floatToggle">▶</button>
+  <button class="icon-btn" id="floatClose" aria-label="Masquer">✕</button>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-top">
+      <h2 id="modalTitle">Ajouter</h2>
+      <button class="icon-btn" id="closeModal" aria-label="Fermer">✕</button>
+    </div>
+    <form id="modalForm"></form>
+  </div>
+</div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script>
-(function(){
-"use strict";
-const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
-const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`};
-const uid=()=>`${Date.now().toString(36)}${Math.random().toString(36).slice(2,8)}`;
-const safeLoad=(key,fallback)=>{try{const x=localStorage.getItem("mds2_"+key);return x===null?fallback:JSON.parse(x)}catch{return fallback}};
-const state={
- tasks:safeLoad("tasks",[]),projects:safeLoad("projects",[
- {id:uid(),name:"Mon laboratoire informatique",description:"Organiser les serveurs, les machines virtuelles et les services réseau.",category:"Informatique",progress:35,color:"🖥️"},
- {id:uid(),name:"Mon site personnel",description:"Construire et améliorer mes projets web sur GitHub Pages.",category:"Développement",progress:60,color:"🌐"},
- {id:uid(),name:"Objectifs personnels",description:"Centraliser mes idées et avancer régulièrement.",category:"Personnel",progress:20,color:"🎯"}]),
- goals:safeLoad("goals",[
- {id:uid(),name:"Apprendre une nouvelle compétence",description:"Consacrer du temps à l'apprentissage chaque semaine.",target:10,current:3,unit:"sessions"},
- {id:uid(),name:"Faire avancer mon projet web",description:"Améliorer le site et vérifier chaque fonctionnalité.",target:8,current:2,unit:"étapes"}]),
- habits:safeLoad("habits",[
- {id:uid(),name:"Lire ou apprendre 15 minutes",icon:"📚",days:{}},
- {id:uid(),name:"Avancer sur un projet",icon:"💻",days:{}},
- {id:uid(),name:"Préparer les priorités du lendemain",icon:"📝",days:{}}]),
- events:safeLoad("events",[]),settings:safeLoad("settings",{name:"",theme:"dark",weekStart:1})
-};
-for(const k of ["tasks","projects","goals","habits","events"])if(!Array.isArray(state[k]))state[k]=[];
-function persist(key){localStorage.setItem("mds2_"+key,JSON.stringify(state[key]))}
-function persistAll(){["tasks","projects","goals","habits","events","settings"].forEach(persist)}
-function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function dateLabel(s){if(!s)return "Sans échéance";const d=new Date(s+"T12:00:00");return isNaN(d)?"":d.toLocaleDateString("fr-FR",{day:"numeric",month:"short",year:"numeric"})}
-let toastTimer;
-function toast(msg){const el=$("#toast");el.textContent=msg;el.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),2600)}
-const pageInfo={dashboard:["Vue d'ensemble","Voici ce qui se passe dans ton espace aujourd'hui."],tasks:["Mes tâches","Clarifie tes priorités et transforme tes idées en actions."],projects:["Mes projets","Un espace pour structurer tes projets et suivre leur progression."],calendar:["Mon calendrier","Planifie tes rendez-vous, échéances et moments importants."],habits:["Mes habitudes","Les petites actions répétées construisent de grandes habitudes."],goals:["Mes objectifs","Définis une cible, mesure tes progrès et célèbre tes avancées."],settings:["Paramètres","Gère ton profil, tes préférences et tes sauvegardes."]};
-function go(view){if(!pageInfo[view])view="dashboard";$$(".view").forEach(v=>v.classList.toggle("active",v.id==="view-"+view));$$("[data-view]").forEach(a=>a.classList.toggle("active",a.dataset.view===view));$("#pageTitle").textContent=pageInfo[view][0];$("#pageSubtitle").textContent=pageInfo[view][1];if(location.hash!=="#"+view)history.replaceState(null,"","#"+view);render();window.scrollTo({top:0,behavior:"smooth"})}
-$("#navigation").addEventListener("click",e=>{const a=e.target.closest("[data-view]");if(a){e.preventDefault();go(a.dataset.view)}});
-$$("[data-go]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.go)));
-function taskMarkup(t,full=false){return `<div class="task ${t.done?"done":""}"><input class="check" type="checkbox" data-task-check="${esc(t.id)}" ${t.done?"checked":""} aria-label="Marquer comme terminée"><div class="task-body"><div class="task-title">${esc(t.title)}</div><div class="task-meta">${esc(t.category||"Personnel")} · ${t.due?esc(dateLabel(t.due)):"Sans échéance"} ${t.priority?`· <span class="pill ${t.priority==="Haute"?"orange":""}">${esc(t.priority)}</span>`:""}</div></div><div class="row-actions">${full?`<button class="icon-btn" data-edit-task="${esc(t.id)}" aria-label="Modifier">✎</button>`:""}<button class="icon-btn" data-delete-task="${esc(t.id)}" aria-label="Supprimer">×</button></div></div>`}
-function renderTasks(){const open=state.tasks.filter(t=>!t.done),done=state.tasks.filter(t=>t.done);$("#statOpen").textContent=open.length;$("#statDone").textContent=done.length;const priority=[...open].sort((a,b)=>({Haute:0,Moyenne:1,Basse:2}[a.priority]??3)-({Haute:0,Moyenne:1,Basse:2}[b.priority]??3));$("#dashboardTasks").innerHTML=priority.slice(0,5).map(t=>taskMarkup(t)).join("")||'<div class="empty">Aucune tâche en attente. Profite de ce temps ou ajoute une action !</div>';const q=($("#taskSearch")?.value||"").toLowerCase(),filter=$("#taskFilter")?.value||"all";const arr=state.tasks.filter(t=>(filter==="all"||(filter==="open"&&!t.done)||(filter==="done"&&t.done))&&(t.title+" "+(t.category||"")).toLowerCase().includes(q));$("#allTasks").innerHTML=arr.map(t=>taskMarkup(t,true)).join("")||'<div class="empty">Aucune tâche ne correspond à ce filtre.</div>';$("#taskCountLabel").textContent=`${state.tasks.length} tâche${state.tasks.length>1?"s":""}`}
-function renderProjects(){const q=($("#projectSearch")?.value||"").toLowerCase();$("#statProjects").textContent=state.projects.length;const arr=state.projects.filter(p=>(p.name+" "+p.description+" "+p.category).toLowerCase().includes(q));$("#allProjects").innerHTML=arr.map(p=>`<article class="project-card"><div class="project-symbol">${esc(p.color||"📌")}</div><h3>${esc(p.name)}</h3><p>${esc(p.description)}</p><span class="pill blue">${esc(p.category||"Personnel")}</span><div class="progress-line"><span style="width:${Math.max(0,Math.min(100,Number(p.progress)||0))}%"></span></div><div class="project-foot"><span class="muted" style="font-size:11px">${Math.max(0,Math.min(100,Number(p.progress)||0))}% réalisé</span><span><button class="icon-btn" data-edit-project="${esc(p.id)}" aria-label="Modifier">✎</button><button class="icon-btn" data-delete-project="${esc(p.id)}" aria-label="Supprimer">×</button></span></div></article>`).join("")||'<div class="empty">Aucun projet trouvé.</div>'}
-function renderGoals(){const html=g=>{const pct=g.target>0?Math.min(100,Math.round(g.current/g.target*100)):0;return `<div class="goal-row"><div class="goal-emoji">◎</div><div class="goal-content"><div class="goal-title">${esc(g.name)}</div><div class="goal-detail">${esc(g.description||"")} · ${g.current}/${g.target} ${esc(g.unit||"étapes")}</div><div class="progress-line"><span style="width:${pct}%"></span></div></div><span class="goal-pct">${pct}%</span><div><button class="icon-btn" data-goal-step="${esc(g.id)}" aria-label="Augmenter la progression">＋</button><button class="icon-btn" data-edit-goal="${esc(g.id)}" aria-label="Modifier">✎</button><button class="icon-btn" data-delete-goal="${esc(g.id)}" aria-label="Supprimer">×</button></div></div>`};$("#dashboardGoals").innerHTML=state.goals.slice(0,4).map(html).join("")||'<div class="empty">Ajoute ton premier objectif.</div>';$("#allGoals").innerHTML=state.goals.map(g=>`<article class="project-card"><div class="project-symbol">◎</div><h3>${esc(g.name)}</h3><p>${esc(g.description||"Un objectif à atteindre à ton rythme.")}</p>${html(g)}</article>`).join("")||'<div class="empty">Aucun objectif enregistré.</div>'}
-function renderHabits(){const todayKey=today();const count=state.habits.filter(h=>h.days&&h.days[todayKey]).length;$("#statHabits").textContent=`${count}/${state.habits.length}`;$("#habitList").innerHTML=state.habits.map(h=>`<div class="habit-item"><div class="goal-emoji">${esc(h.icon||"✓")}</div><div class="grow"><strong>${esc(h.name)}</strong><p>${h.days&&h.days[todayKey]?"Terminé aujourd'hui":"Un petit pas aujourd'hui"}</p></div><button class="btn small ${h.days&&h.days[todayKey]?"":"primary"}" data-habit-check="${esc(h.id)}">${h.days&&h.days[todayKey]?"✓ Fait":"Marquer fait"}</button><button class="icon-btn" data-edit-habit="${esc(h.id)}" aria-label="Modifier">✎</button><button class="icon-btn" data-delete-habit="${esc(h.id)}" aria-label="Supprimer">×</button></div>`).join("")||'<div class="empty">Ajoute une habitude à suivre.</div>';const monday=new Date();const day=(monday.getDay()+6)%7;monday.setDate(monday.getDate()-day);$("#weekGrid").innerHTML=Array.from({length:7},(_,i)=>{const d=new Date(monday);d.setDate(d.getDate()+i);const key=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;const n=state.habits.filter(h=>h.days&&h.days[key]).length;return `<div class="day ${n?"marked":""}">${d.toLocaleDateString("fr-FR",{weekday:"short"})}<strong>${d.getDate()}</strong><span>${n?`✓ ${n}`:"—"}</span></div>`}).join("")}
-let monthCursor=new Date();monthCursor.setDate(1);
-function renderCalendar(){const year=monthCursor.getFullYear(),month=monthCursor.getMonth();$("#monthTitle").textContent=monthCursor.toLocaleDateString("fr-FR",{month:"long",year:"numeric"});const first=new Date(year,month,1),offset=(first.getDay()+6)%7,total=new Date(year,month+1,0).getDate(),cells=Math.ceil((offset+total)/7)*7;let html="";for(let i=0;i<cells;i++){const n=i-offset+1;if(n<1||n>total){html+='<div class="calendar-cell"></div>';continue}const key=`${year}-${String(month+1).padStart(2,"0")}-${String(n).padStart(2,"0")}`,ev=state.events.filter(e=>e.date===key);html+=`<div class="calendar-cell ${key===today()?"today":""}"><button class="icon-btn" data-calendar-date="${key}" style="font-weight:700;color:var(--text)">${n}</button>${ev.slice(0,2).map(e=>`<div class="event" title="${esc(e.title)}">${esc(e.title)}</div>`).join("")}${ev.length>2?`<div>+${ev.length-2}</div>`:""}</div>`}$("#calendarGrid").innerHTML=html;const upcoming=[...state.events].filter(e=>e.date>=today()).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));$("#eventList").innerHTML=upcoming.map(e=>`<div class="task"><div class="goal-emoji">▣</div><div class="task-body"><div class="task-title">${esc(e.title)}</div><div class="task-meta">${esc(dateLabel(e.date))}${e.time?" · "+esc(e.time):""}${e.note?" · "+esc(e.note):""}</div></div><button class="icon-btn" data-edit-event="${esc(e.id)}" aria-label="Modifier">✎</button><button class="icon-btn" data-delete-event="${esc(e.id)}" aria-label="Supprimer">×</button></div>`).join("")||'<div class="empty">Aucun événement à venir.</div>'}
-function render(){renderTasks();renderProjects();renderGoals();renderHabits();renderCalendar();const name=state.settings.name||"";$("#avatar").textContent=(name[0]||"P").toUpperCase();$("#todayLabel").textContent=new Date().toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"}).toUpperCase();document.title=(name?name+" · ":"")+"MyDigital Space"}
-const backdrop=$("#modalBackdrop"),form=$("#modalForm");function closeModal(){backdrop.classList.remove("open");form.innerHTML=""}$("#closeModal").addEventListener("click",closeModal);backdrop.addEventListener("click",e=>{if(e.target===backdrop)closeModal()});document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
-function openForm(type,id=null,extra={}){const item=id?({task:state.tasks,project:state.projects,goal:state.goals,habit:state.habits,event:state.events}[type]||[]).find(x=>x.id===id):null;const titles={task:item?"Modifier la tâche":"Nouvelle tâche",project:item?"Modifier le projet":"Nouveau projet",goal:item?"Modifier l'objectif":"Nouvel objectif",habit:item?"Modifier l'habitude":"Nouvelle habitude",event:item?"Modifier l'événement":"Nouvel événement"};$("#modalTitle").textContent=titles[type];const input=(label,name,value="",kind="text",required=false)=>`<div class="field"><label for="f_${name}">${label}</label><input id="f_${name}" name="${name}" type="${kind}" value="${esc(value)}" ${required?"required":""} ${kind==="number"?'min="0"':''}></div>`;const area=(label,name,value="")=>`<div class="field full"><label for="f_${name}">${label}</label><textarea id="f_${name}" name="${name}">${esc(value)}</textarea></div>`;let body="";
-if(type==="task")body=`<div class="form-grid">${input("Titre","title",item?.title||"","text",true)}${input("Échéance","due",item?.due||extra.date||"","date")}<div class="field"><label for="f_priority">Priorité</label><select id="f_priority" name="priority"><option ${item?.priority==="Haute"?"selected":""}>Haute</option><option ${(!item||item.priority==="Moyenne")?"selected":""}>Moyenne</option><option ${item?.priority==="Basse"?"selected":""}>Basse</option></select></div><div class="field"><label for="f_category">Catégorie</label><select id="f_category" name="category">${["Personnel","Travail","Études","Informatique","Football","Autre"].map(c=>`<option ${item?.category===c?"selected":""}>${c}</option>`).join("")}</select></div></div>`;
-if(type==="project")body=`<div class="form-grid">${input("Nom du projet","name",item?.name||"","text",true)}<div class="field"><label for="f_category">Catégorie</label><select name="category" id="f_category">${["Personnel","Informatique","Études","Football","Développement","Autre"].map(c=>`<option ${item?.category===c?"selected":""}>${c}</option>`).join("")}</select></div>${area("Description","description",item?.description||"")}${input("Progression (%)","progress",item?.progress??0,"number")}${input("Icône (emoji)","color",item?.color||"📌")}</div>`;
-if(type==="goal")body=`<div class="form-grid">${input("Nom de l'objectif","name",item?.name||"","text",true)}${input("Unité de progression","unit",item?.unit||"étapes")}${area("Description","description",item?.description||"")}${input("Progression actuelle","current",item?.current??0,"number")}${input("Cible","target",item?.target??10,"number")}</div>`;
-if(type==="habit")body=`${input("Nom de l'habitude","name",item?.name||"","text",true)}${input("Icône (emoji)","icon",item?.icon||"✓")}`;
-if(type==="event")body=`<div class="form-grid">${input("Nom de l'événement","title",item?.title||"","text",true)}${input("Date","date",item?.date||extra.date||today(),"date",true)}${input("Heure","time",item?.time||"","time")}${area("Note (facultatif)","note",item?.note||"")}</div>`;
-form.innerHTML=body+`<div style="display:flex;justify-content:flex-end;gap:8px;margin-top:10px"><button class="btn" type="button" id="cancelModal">Annuler</button><button class="btn primary" type="submit">Enregistrer</button></div>`;$("#cancelModal").addEventListener("click",closeModal);form.onsubmit=e=>{e.preventDefault();const fd=new FormData(form),v=Object.fromEntries(fd.entries());if(type==="task"){const data={id:item?.id||uid(),title:v.title.trim(),due:v.due,priority:v.priority,category:v.category,done:item?.done||false};upsert("tasks",data)}if(type==="project"){upsert("projects",{id:item?.id||uid(),name:v.name.trim(),category:v.category,description:v.description.trim(),progress:Math.min(100,Number(v.progress)||0),color:v.color||"📌"})}if(type==="goal"){upsert("goals",{id:item?.id||uid(),name:v.name.trim(),unit:v.unit.trim()||"étapes",description:v.description.trim(),current:Math.max(0,Number(v.current)||0),target:Math.max(1,Number(v.target)||1)})}if(type==="habit"){upsert("habits",{id:item?.id||uid(),name:v.name.trim(),icon:v.icon||"✓",days:item?.days||{}})}if(type==="event"){upsert("events",{id:item?.id||uid(),title:v.title.trim(),date:v.date,time:v.time,note:v.note.trim()})}persistAll();closeModal();render();toast(item?"Modifications enregistrées":"Ajout effectué")};backdrop.classList.add("open");setTimeout(()=>form.querySelector("input,textarea,select")?.focus(),40)}
-function upsert(key,obj){const i=state[key].findIndex(x=>x.id===obj.id);if(i<0)state[key].push(obj);else state[key][i]=obj}
-$$("[data-action]").forEach(b=>b.addEventListener("click",()=>{const type=b.dataset.action;openForm(type)}));
-document.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const pairs=[["edit-task","tasks","task"],["edit-project","projects","project"],["edit-goal","goals","goal"],["edit-habit","habits","habit"],["edit-event","events","event"]];for(const [attr,key,type] of pairs){if(b.dataset[attr]){openForm(type,b.dataset[attr]);return}}const deletes=[["delete-task","tasks","tâche"],["delete-project","projects","projet"],["delete-goal","goals","objectif"],["delete-habit","habits","habitude"],["delete-event","events","événement"]];for(const [attr,key,label] of deletes){if(b.dataset[attr]){if(confirm("Supprimer cet élément ?")){state[key]=state[key].filter(x=>x.id!==b.dataset[attr]);persist(key);render();toast("Élément supprimé")}return}}if(b.dataset.goalStep){const g=state.goals.find(x=>x.id===b.dataset.goalStep);if(g){g.current=Math.min(g.target,g.current+1);persist("goals");renderGoals();toast("Progression mise à jour")}return}if(b.dataset.habitCheck){const h=state.habits.find(x=>x.id===b.dataset.habitCheck);if(h){h.days=h.days||{};if(h.days[today()])delete h.days[today()];else h.days[today()]=true;persist("habits");renderHabits();$("#statHabits").textContent=`${state.habits.filter(x=>x.days&&x.days[today()]).length}/${state.habits.length}`;toast("Habitude mise à jour")}return}if(b.dataset.calendarDate){openForm("event",null,{date:b.dataset.calendarDate});return}});
-document.addEventListener("change",e=>{const el=e.target;if(el.matches("[data-task-check]")){const t=state.tasks.find(x=>x.id===el.dataset.taskCheck);if(t){t.done=el.checked;persist("tasks");renderTasks()}}});
-$("#taskSearch").addEventListener("input",renderTasks);$("#taskFilter").addEventListener("change",renderTasks);$("#projectSearch").addEventListener("input",renderProjects);$("#prevMonth").addEventListener("click",()=>{monthCursor.setMonth(monthCursor.getMonth()-1);renderCalendar()});$("#nextMonth").addEventListener("click",()=>{monthCursor.setMonth(monthCursor.getMonth()+1);renderCalendar()});
-function applyTheme(){document.body.classList.toggle("light",state.settings.theme==="light");$("#themeToggle").textContent=state.settings.theme==="light"?"☾":"☼"}function toggleTheme(){state.settings.theme=state.settings.theme==="light"?"dark":"light";persist("settings");applyTheme()}$("#themeToggle").addEventListener("click",toggleTheme);$("#settingsTheme").addEventListener("click",toggleTheme);
-$("#saveSettings").addEventListener("click",()=>{state.settings.name=$("#nameInput").value.trim().slice(0,40);state.settings.weekStart=Number($("#weekStart").value)===0?0:1;persist("settings");render();toast("Paramètres enregistrés")});
-function exportAll(){const data={format:"MyDigitalSpaceBackup",version:1,exportedAt:new Date().toISOString(),tasks:state.tasks,projects:state.projects,goals:state.goals,habits:state.habits,events:state.events,settings:state.settings};const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="mydigital-space-backup.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);toast("Sauvegarde exportée")}
-$("#exportData").addEventListener("click",exportAll);$("#importFile").addEventListener("change",async e=>{const file=e.target.files[0];if(!file)return;try{const d=JSON.parse(await file.text());if(d.format!=="MyDigitalSpaceBackup"||!Array.isArray(d.tasks)||!Array.isArray(d.projects)||!Array.isArray(d.goals)||!Array.isArray(d.habits)||!Array.isArray(d.events))throw Error("Format incorrect");if(!confirm("Importer cette sauvegarde remplacera les données actuelles. Continuer ?"))return;for(const k of ["tasks","projects","goals","habits","events"])state[k]=d[k];state.settings={...state.settings,...(d.settings||{})};persistAll();$("#nameInput").value=state.settings.name||"";$("#weekStart").value=String(state.settings.weekStart??1);applyTheme();render();toast("Sauvegarde restaurée")}catch{alert("Fichier invalide ou incompatible. Choisis une sauvegarde MyDigital Space.")}finally{e.target.value=""}});
-$("#clearData").addEventListener("click",()=>{if(!confirm("Effacer toutes les tâches, projets, objectifs, habitudes et événements de ce navigateur ? Cette action ne peut pas être annulée."))return;if(!confirm("Dernière confirmation : as-tu exporté les données à conserver ?"))return;["tasks","projects","goals","habits","events"].forEach(k=>{state[k]=[];persist(k)});render();toast("Données effacées")});
-$("#globalSearch").addEventListener("keydown",e=>{if(e.key==="Enter"){const q=e.target.value.trim();if(!q)return;go("tasks");$("#taskSearch").value=q;renderTasks();if(!state.tasks.some(t=>t.title.toLowerCase().includes(q.toLowerCase()))){go("projects");$("#projectSearch").value=q;renderProjects()}}});
-$("#nameInput").value=state.settings.name||"";$("#weekStart").value=String(state.settings.weekStart??1);applyTheme();
-const initial=(location.hash||"#dashboard").slice(1);go(pageInfo[initial]?initial:"dashboard");
-})();
-</script>
+
+<script src="js/app.js" defer></script>
 </body>
 </html>
