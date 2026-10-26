@@ -1,0 +1,664 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MyDigital Space</title>
+
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #141f33;
+      --text: #edf4ff;
+      --muted: #9aabc4;
+      --accent: #56a8ff;
+      --border: #263650;
+      --input: #0d1728;
+    }
+
+    body.light {
+      --bg: #eef4fb;
+      --panel: #ffffff;
+      --text: #18253a;
+      --muted: #60718b;
+      --accent: #1769cf;
+      --border: #d9e3ef;
+      --input: #f5f8fc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, sans-serif;
+      transition: background .2s, color .2s;
+    }
+
+    button, input, select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    aside {
+      width: 235px;
+      padding: 28px 18px;
+      background: var(--panel);
+      border-right: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: bold;
+      margin-bottom: 38px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-link {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      margin-bottom: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      border: 0;
+      border-radius: 9px;
+      background: transparent;
+      text-align: left;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: var(--bg);
+      color: var(--accent);
+    }
+
+    main {
+      flex: 1;
+      min-width: 0;
+      padding: 32px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(24px, 4vw, 34px);
+    }
+
+    h2 {
+      font-size: 19px;
+      margin-top: 0;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .button {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 9px;
+    }
+
+    .button.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 22px;
+      margin-bottom: 22px;
+    }
+
+    .stat {
+      font-size: 30px;
+      font-weight: bold;
+      margin: 14px 0 6px;
+      color: var(--accent);
+    }
+
+    .project-icon {
+      font-size: 27px;
+      margin-bottom: 12px;
+    }
+
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      min-width: 0;
+    }
+
+    .project-card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--bg);
+      color: var(--accent);
+      border-radius: 6px;
+      padding: 5px 8px;
+      font-size: 12px;
+    }
+
+    .field {
+      width: 100%;
+      padding: 11px 12px;
+      margin: 7px 0 12px;
+      background: var(--input);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .task-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .task-row:last-child {
+      border-bottom: 0;
+    }
+
+    .task-row label {
+      flex: 1;
+      overflow-wrap: anywhere;
+    }
+
+    .task-row.done label {
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+
+    .delete {
+      color: #ff8585;
+      background: transparent;
+      border: 0;
+      padding: 7px;
+    }
+
+    .section {
+      scroll-margin-top: 20px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+      padding: 15px;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      aside {
+        width: 190px;
+      }
+
+      main {
+        padding: 22px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .layout {
+        display: block;
+      }
+
+      aside {
+        width: 100%;
+        padding: 18px;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .logo {
+        margin-bottom: 15px;
+      }
+
+      aside nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+      }
+
+      .nav-link {
+        width: auto;
+        margin: 0;
+        padding: 9px;
+      }
+
+      main {
+        padding: 18px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div class="layout">
+
+  <aside>
+    <div class="logo">MyDigital<span>Space</span></div>
+
+    <nav aria-label="Navigation principale">
+      <a class="nav-link active" href="#accueil">🏠 Accueil</a>
+      <a class="nav-link" href="#projets">💻 Mes projets</a>
+      <a class="nav-link" href="#taches">✅ Mes tâches</a>
+      <a class="nav-link" href="#raccourcis">🔗 Raccourcis</a>
+      <a class="nav-link" href="#parametres">⚙️ Paramètres</a>
+    </nav>
+
+    <p class="muted" style="margin-top:35px;font-size:13px">
+      Mon espace numérique personnel
+    </p>
+  </aside>
+
+  <main>
+    <header id="accueil">
+      <div>
+        <p class="muted" id="date">Mon espace personnel</p>
+        <h1>Bonjour ! 👋</h1>
+        <p class="muted">Bienvenue dans ton espace numérique.</p>
+      </div>
+
+      <button class="button" id="themeBtn" type="button">
+        ☀️ / 🌙
+      </button>
+    </header>
+
+    <section class="grid" aria-label="Statistiques">
+      <article class="panel">
+        <div class="muted">Mes projets</div>
+        <div class="stat" id="projectCount">4</div>
+        <div class="muted">Projets enregistrés</div>
+      </article>
+
+      <article class="panel">
+        <div class="muted">Tâches restantes</div>
+        <div class="stat" id="remainingCount">0</div>
+        <div class="muted">À réaliser</div>
+      </article>
+
+      <article class="panel">
+        <div class="muted">Tâches terminées</div>
+        <div class="stat" id="doneCount">0</div>
+        <div class="muted">Bravo pour tes progrès !</div>
+      </article>
+    </section>
+
+    <section class="panel section" id="projets">
+      <h2>💻 Mes projets</h2>
+      <p class="muted">
+        Retrouve ici tes idées et tes projets en cours.
+      </p>
+
+      <input
+        class="field"
+        id="projectSearch"
+        type="search"
+        placeholder="Rechercher un projet..."
+        aria-label="Rechercher un projet"
+      >
+
+      <div class="grid" id="projectGrid">
+        <article class="project-card" data-search="informatique serveur réseau">
+          <div class="project-icon">🖥️</div>
+          <h3>IT Lab Manager</h3>
+          <p>Serveurs, réseau, virtualisation et Docker.</p>
+          <span class="tag">Informatique</span>
+        </article>
+
+        <article class="project-card" data-search="football club gestion">
+          <div class="project-icon">⚽</div>
+          <h3>Football Manager Web</h3>
+          <p>Un univers de football à développer.</p>
+          <span class="tag">Football</span>
+        </article>
+
+        <article class="project-card" data-search="site web github pages">
+          <div class="project-icon">🌐</div>
+          <h3>Mes sites web</h3>
+          <p>Mes créations et expérimentations HTML.</p>
+          <span class="tag">Développement</span>
+        </article>
+
+        <article class="project-card" data-search="apprentissage notes">
+          <div class="project-icon">📚</div>
+          <h3>Mon espace d'apprentissage</h3>
+          <p>Mes notes, tutoriels et objectifs.</p>
+          <span class="tag">Personnel</span>
+        </article>
+      </div>
+      <p class="muted" id="noProjects" hidden>
+        Aucun projet ne correspond à cette recherche.
+      </p>
+    </section>
+
+    <section class="panel section" id="taches">
+      <h2>✅ Ma liste de tâches</h2>
+      <p class="muted">
+        Les tâches sont sauvegardées dans ton navigateur.
+      </p>
+
+      <form id="taskForm">
+        <label for="taskInput">Nouvelle tâche</label>
+        <input
+          class="field"
+          id="taskInput"
+          maxlength="150"
+          placeholder="Ex. : Installer un serveur Debian"
+          required
+        >
+        <button class="button primary" type="submit">
+          + Ajouter une tâche
+        </button>
+      </form>
+
+      <div id="taskList" style="margin-top:20px"></div>
+      <p class="muted" id="emptyTasks">
+        Aucune tâche pour le moment. Ajoutes-en une !
+      </p>
+    </section>
+
+    <section class="panel section" id="raccourcis">
+      <h2>🔗 Mes raccourcis</h2>
+      <p class="muted">Accède rapidement à tes outils préférés.</p>
+
+      <div class="grid">
+        <article class="project-card">
+          <div class="project-icon">🐙</div>
+          <h3>GitHub</h3>
+          <p>Code et dépôts de projets.</p>
+          <a href="https://github.com/" target="_blank"
+             rel="noopener noreferrer">Ouvrir GitHub ↗</a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-icon">📖</div>
+          <h3>MDN Web Docs</h3>
+          <p>Documentation HTML, CSS et JavaScript.</p>
+          <a href="https://developer.mozilla.org/fr/"
+             target="_blank" rel="noopener noreferrer">
+            Consulter la documentation ↗
+          </a>
+        </article>
+
+        <article class="project-card">
+          <div class="project-icon">🚀</div>
+          <h3>GitHub Pages</h3>
+          <p>Hébergement de sites statiques.</p>
+          <a href="https://pages.github.com/"
+             target="_blank" rel="noopener noreferrer">
+            Découvrir Pages ↗
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel section" id="parametres">
+      <h2>⚙️ Paramètres</h2>
+      <p class="muted">Personnalise ton espace.</p>
+
+      <label for="displayName">Ton prénom affiché</label>
+      <input class="field" id="displayName"
+             maxlength="40" placeholder="Ex. : Paul">
+
+      <button class="button primary" id="saveName" type="button">
+        Enregistrer le prénom
+      </button>
+
+      <p>
+        <button class="button" id="exportBtn" type="button">
+          Exporter mes tâches
+        </button>
+      </p>
+
+      <p class="muted">
+        Les données restent sur cet appareil et dans ce navigateur.
+        Effacer les données du navigateur peut les supprimer.
+      </p>
+    </section>
+
+    <footer>
+      MyDigital Space · Version 1.0 · Créé avec HTML, CSS et JavaScript
+    </footer>
+  </main>
+</div>
+
+<script>
+  const $ = (selector) => document.querySelector(selector);
+
+  // Chargement sécurisé des données locales
+  function load(key, fallback) {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : JSON.parse(value);
+    } catch {
+      return fallback;
+    }
+  }
+
+  function save(key, value) {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch {
+      alert("Impossible de sauvegarder. Vérifie le stockage du navigateur.");
+    }
+  }
+
+  let tasks = load("mds_tasks", []);
+  if (!Array.isArray(tasks)) tasks = [];
+
+  let savedName = load("mds_name", "");
+  if (typeof savedName !== "string") savedName = "";
+
+  function renderTasks() {
+    const list = $("#taskList");
+    list.replaceChildren();
+
+    tasks.forEach((task) => {
+      const row = document.createElement("div");
+      row.className = "task-row" + (task.done ? " done" : "");
+
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.checked = Boolean(task.done);
+      checkbox.setAttribute("aria-label", "Tâche terminée");
+
+      checkbox.addEventListener("change", () => {
+        task.done = checkbox.checked;
+        save("mds_tasks", tasks);
+        renderTasks();
+      });
+
+      const label = document.createElement("label");
+      label.textContent = task.text;
+
+      const remove = document.createElement("button");
+      remove.className = "delete";
+      remove.type = "button";
+      remove.textContent = "Supprimer";
+      remove.setAttribute("aria-label", "Supprimer " + task.text);
+
+      remove.addEventListener("click", () => {
+        tasks = tasks.filter((item) => item.id !== task.id);
+        save("mds_tasks", tasks);
+        renderTasks();
+      });
+
+      row.append(checkbox, label, remove);
+      list.append(row);
+    });
+
+    const completed = tasks.filter((task) => task.done).length;
+
+    $("#remainingCount").textContent = tasks.length - completed;
+    $("#doneCount").textContent = completed;
+    $("#emptyTasks").hidden = tasks.length > 0;
+  }
+
+  $("#taskForm").addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const input = $("#taskInput");
+    const text = input.value.trim();
+
+    if (!text) return;
+
+    tasks.push({
+      id: Date.now() + "-" + Math.random().toString(16).slice(2),
+      text,
+      done: false
+    });
+
+    save("mds_tasks", tasks);
+    input.value = "";
+    renderTasks();
+    input.focus();
+  });
+
+  // Mode sombre / clair
+  function applyTheme(theme) {
+    document.body.classList.toggle("light", theme === "light");
+    save("mds_theme", theme);
+  }
+
+  $("#themeBtn").addEventListener("click", () => {
+    const next = document.body.classList.contains("light")
+      ? "dark"
+      : "light";
+
+    applyTheme(next);
+  });
+
+  const initialTheme = load("mds_theme", "dark");
+  applyTheme(initialTheme === "light" ? "light" : "dark");
+
+  // Recherche de projets
+  $("#projectSearch").addEventListener("input", (event) => {
+    const query = event.target.value.trim().toLowerCase();
+    let visible = 0;
+
+    document.querySelectorAll(".project-card[data-search]")
+      .forEach((card) => {
+        const matches = card.dataset.search.includes(query) ||
+          card.textContent.toLowerCase().includes(query);
+
+        card.classList.toggle("hidden", !matches);
+        if (matches) visible++;
+      });
+
+    $("#noProjects").hidden = visible > 0;
+  });
+
+  // Personnalisation du prénom
+  function updateGreeting(name) {
+    const title = document.querySelector("header h1");
+    title.textContent = name ? "Bonjour " + name + " ! 👋" : "Bonjour ! 👋";
+  }
+
+  $("#displayName").value = savedName;
+  updateGreeting(savedName);
+
+  $("#saveName").addEventListener("click", () => {
+    savedName = $("#displayName").value.trim().slice(0, 40);
+    save("mds_name", savedName);
+    updateGreeting(savedName);
+  });
+
+  // Date du jour
+  $("#date").textContent = new Intl.DateTimeFormat("fr-FR", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  }).format(new Date());
+
+  // Export JSON des tâches
+  $("#exportBtn").addEventListener("click", () => {
+    const blob = new Blob(
+      [JSON.stringify(tasks, null, 2)],
+      { type: "application/json" }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "mes-taches.json";
+    link.click();
+    URL.revokeObjectURL(url);
+  });
+
+  // Statistiques des projets
+  $("#projectCount").textContent =
+    document.querySelectorAll(".project-card[data-search]").length;
+
+  renderTasks();
+</script>
+</body>
+</html>
